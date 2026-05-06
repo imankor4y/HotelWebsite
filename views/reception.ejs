@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reception — Crown Hotel</title>
+    <link rel="stylesheet" href="/stylesheets/staff.css">
+    <script src="/scripts/staff.js" defer></script>
+<body class="staff-page page-reception">
+
+    <!-- TOPBAR -->
+    <header class="staff-topbar">
+        <div class="staff-topbar__left">
+            <a href="/reception" class="staff-topbar__brand">CROWN HOTEL <span class="staff-topbar__portal">Staff</span></a>
+            <nav class="staff-topbar__links" aria-label="Staff navigation">
+                <a href="/reception" class="active">Reception</a>
+                <a href="/housekeeping">Housekeeping</a>
+                <a href="/reports">Reports</a>
+            </nav>
+        </div>
+        <div class="staff-topbar__right">
+            <a href="/" class="staff-topbar__website">Hotel Website</a>
+            <span class="staff-topbar__time"><%= new Date().toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }) %></span>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="staff-content">
+
+        <div class="staff-page-header">
+            <div>
+                <h1 class="staff-page-title">Today's Room Status</h1>
+                <p class="staff-page-sub">All available and occupied rooms as of today.</p>
+            </div>
+        </div>
+
+        <% if (message) { %>
+            <p class="success-message" role="status"><%= message %></p>
+        <% } %>
+        <% if (error) { %>
+            <p class="error-message" role="alert"><%= error %></p>
+        <% } %>
+
+        <!-- AMEND BOOKING -->
+        <div class="staff-card amend-card">
+            <div class="staff-card__header">
+                <span class="staff-card__title">Amend a Booking</span>
+            </div>
+            <div class="staff-card__body">
+                <div class="s-form-row" id="amendSearch">
+                    <div class="s-field">
+                        <label class="s-label" for="amendRef">Booking Reference</label>
+                        <input class="s-input" type="text" id="amendRef" placeholder="e.g. CRW-15977 or 15977">
+                    </div>
+                    <button class="btn-s btn-s--primary" id="amendSearchBtn">Find Booking</button>
+                </div>
+                <p class="amend-search-error" id="amendError" role="alert"></p>
+
+                <!-- Amend form — hidden until booking found -->
+                <form method="post" action="/reception/amend" id="amendForm" class="amend-form" hidden>
+                    <input type="hidden" name="b_ref" id="amend-b_ref">
+                    <input type="hidden" name="r_no"  id="amend-r_no">
+
+                    <div class="amend-summary" id="amendSummary"></div>
+
+                    <div class="s-form-row">
+                        <div class="s-field">
+                            <label class="s-label" for="amend-checkin">New Check-in</label>
+                            <input class="s-input" type="date" id="amend-checkin" name="checkin" required>
+                        </div>
+                        <div class="s-field">
+                            <label class="s-label" for="amend-checkout">New Check-out</label>
+                            <input class="s-input" type="date" id="amend-checkout" name="checkout" required>
+                        </div>
+                    </div>
+
+                    <div class="s-field amend-notes-field">
+                        <label class="s-label" for="amend-notes">Booking Notes</label>
+                        <input class="s-input" type="text" id="amend-notes" name="b_notes" placeholder="e.g. early check-in requested">
+                    </div>
+
+                    <div class="s-form-row amend-actions">
+                        <button type="submit" class="btn-s btn-s--primary">Save Changes</button>
+                        <button type="button" class="btn-s btn-s--ghost" id="amendCancel">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <% if (rooms.length === 0) { %>
+            <p class="staff-page-sub">No rooms to display.</p>
+        <% } else { %>
+
+        <div class="staff-card">
+            <div class="staff-card__header">
+                <span class="staff-card__title">Room List</span>
+                <span class="staff-page-sub"><%= rooms.length %> rooms</span>
+            </div>
+
+            <%# Desktop table — hidden on mobile %>
+            <div class="s-table-wrap reception-table-wrap">
+                <table class="s-table" id="reception-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Room</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Ref</th>
+                            <th scope="col">Guest</th>
+                            <th scope="col">Check-in</th>
+                            <th scope="col">Check-out</th>
+                            <th scope="col">Outstanding</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% rooms.forEach(function(room) { %>
+                        <tr>
+                            <td><strong><%= room.r_no %></strong></td>
+                            <td><%= classLabels[room.r_class] || room.r_class %></td>
+                            <td>
+                                <%
+                                var badgeClass = 'badge--grey';
+                                if (room.r_status === 'A') badgeClass = 'badge--clean';
+                                if (room.r_status === 'O') badgeClass = 'badge--occupied';
+                                if (room.r_status === 'C') badgeClass = 'badge--amber';
+                                if (room.r_status === 'X') badgeClass = 'badge--red';
+                                %>
+                                <span class="badge <%= badgeClass %>"><%= statusLabels[room.r_status] %></span>
+                            </td>
+                            <td><%= room.b_ref ? 'CRW-' + room.b_ref : '—' %></td>
+                            <td><%= room.c_name || '—' %></td>
+                            <td><%= room.checkin  ? new Date(room.checkin).toLocaleDateString('en-GB')  : '—' %></td>
+                            <td><%= room.checkout ? new Date(room.checkout).toLocaleDateString('en-GB') : '—' %></td>
+                            <td>
+                                <% if (room.b_outstanding !== null && room.b_outstanding !== undefined) { %>
+                                    £<%= parseFloat(room.b_outstanding).toFixed(2) %>
+                                <% } else { %>
+                                    —
+                                <% } %>
+                            </td>
+                            <td class="s-table__actions">
+                                <%
+                                const canCheckIn  = room.r_status === 'A' && room.b_ref;
+                                const canCheckOut = room.r_status === 'O' && room.b_ref;
+                                %>
+                                <% if (canCheckIn) { %>
+                                <form method="post" action="/reception/checkin">
+                                    <input type="hidden" name="r_no"  value="<%= room.r_no %>">
+                                    <input type="hidden" name="b_ref" value="<%= room.b_ref %>">
+                                    <button type="submit" class="btn-s btn-s--primary btn-s--sm">Check In</button>
+                                </form>
+                                <% } %>
+                                <% if (canCheckOut) { %>
+                                <form method="post" action="/reception/checkout">
+                                    <input type="hidden" name="r_no"  value="<%= room.r_no %>">
+                                    <input type="hidden" name="b_ref" value="<%= room.b_ref %>">
+                                    <button type="submit" class="btn-s btn-s--outline btn-s--sm">Check Out</button>
+                                </form>
+                                <form method="post" action="/reception/payment" class="s-form-row">
+                                    <input type="hidden" name="b_ref" value="<%= room.b_ref %>">
+                                    <input type="number"
+                                           id="amount-<%= room.b_ref %>"
+                                           name="amount"
+                                           min="0.01"
+                                           step="0.01"
+                                           placeholder="£ Amount"
+                                           class="s-input s-input--sm payment-amount-input">
+                                    <button type="submit" class="btn-s btn-s--ghost btn-s--sm">Pay</button>
+                                </form>
+                                <% } %>
+                                <% if (!canCheckIn && !canCheckOut) { %>
+                                    <span class="s-table__no-action">—</span>
+                                <% } %>
+                            </td>
+                        </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+
+            <%# Mobile cards — hidden on desktop %>
+            <div class="reception-cards">
+                <% rooms.forEach(function(room) { %>
+                <%
+                var cardBadgeClass = 'badge--grey';
+                if (room.r_status === 'A') cardBadgeClass = 'badge--clean';
+                if (room.r_status === 'O') cardBadgeClass = 'badge--occupied';
+                if (room.r_status === 'C') cardBadgeClass = 'badge--amber';
+                if (room.r_status === 'X') cardBadgeClass = 'badge--red';
+                const cardCanCheckIn  = room.r_status === 'A' && room.b_ref;
+                const cardCanCheckOut = room.r_status === 'O' && room.b_ref;
+                %>
+                <div class="reception-card">
+                    <div class="reception-card__header">
+                        <span class="reception-card__room">Room <%= room.r_no %></span>
+                        <span class="badge <%= cardBadgeClass %>"><%= statusLabels[room.r_status] %></span>
+                    </div>
+                    <div class="reception-card__body">
+                        <div class="reception-card__row">
+                            <span class="reception-card__label">Type</span>
+                            <span class="reception-card__val"><%= classLabels[room.r_class] || room.r_class %></span>
+                        </div>
+                        <div class="reception-card__row">
+                            <span class="reception-card__label">Guest</span>
+                            <span class="reception-card__val"><%= room.c_name || '—' %></span>
+                        </div>
+                        <div class="reception-card__row">
+                            <span class="reception-card__label">Check-in</span>
+                            <span class="reception-card__val"><%= room.checkin ? new Date(room.checkin).toLocaleDateString('en-GB') : '—' %></span>
+                        </div>
+                        <div class="reception-card__row">
+                            <span class="reception-card__label">Check-out</span>
+                            <span class="reception-card__val"><%= room.checkout ? new Date(room.checkout).toLocaleDateString('en-GB') : '—' %></span>
+                        </div>
+                        <div class="reception-card__row">
+                            <span class="reception-card__label">Outstanding</span>
+                            <span class="reception-card__val">
+                                <% if (room.b_outstanding !== null && room.b_outstanding !== undefined) { %>
+                                    £<%= parseFloat(room.b_outstanding).toFixed(2) %>
+                                <% } else { %>—<% } %>
+                            </span>
+                        </div>
+                    </div>
+                    <% if (cardCanCheckIn || cardCanCheckOut) { %>
+                    <div class="reception-card__actions">
+                        <% if (cardCanCheckIn) { %>
+                        <form method="post" action="/reception/checkin">
+                            <input type="hidden" name="r_no"  value="<%= room.r_no %>">
+                            <input type="hidden" name="b_ref" value="<%= room.b_ref %>">
+                            <button type="submit" class="btn-s btn-s--primary btn-s--sm">Check In</button>
+                        </form>
+                        <% } %>
+                        <% if (cardCanCheckOut) { %>
+                        <form method="post" action="/reception/checkout">
+                            <input type="hidden" name="r_no"  value="<%= room.r_no %>">
+                            <input type="hidden" name="b_ref" value="<%= room.b_ref %>">
+                            <button type="submit" class="btn-s btn-s--outline btn-s--sm">Check Out</button>
+                        </form>
+                        <form method="post" action="/reception/payment" class="s-form-row">
+                            <input type="hidden" name="b_ref" value="<%= room.b_ref %>">
+                            <input type="number"
+                                   name="amount"
+                                   min="0.01"
+                                   step="0.01"
+                                   placeholder="£ Amount"
+                                   class="s-input s-input--sm payment-amount-input">
+                            <button type="submit" class="btn-s btn-s--ghost btn-s--sm">Pay</button>
+                        </form>
+                        <% } %>
+                    </div>
+                    <% } %>
+                </div>
+                <% }); %>
+            </div>
+
+        </div>
+
+        <% } %>
+
+    </main>
+
+    <footer class="staff-footer">
+        &copy; <%= new Date().getFullYear() %> The Crown Hotel &mdash; Staff Portal
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore the facilities at Crown Hotel Norwich - gym, restaurant, bar, and meeting rooms." >
+  <title>Facilities - Crown Hotel Norwich</title>
+  <link rel="stylesheet" href="../styles.css">
+  <script src="../scripts/main.js" defer></script>
+
+
+</head>
+<body class="page-facilities">
+
+  <!-- 
+       NAVIGATION
+   -->
+  <header>
+    <nav class="nav nav--scrolled" aria-label="Main navigation">
+      <ul class="nav__links nav__links--left">
+        <li><a href="rooms.html">Rooms</a></li>
+        <li><a href="dining.html">Dining</a></li>
+        <li><a href="facilities.html" class="active">Facilities</a></li>
+      </ul>
+
+      <a href="../index.html" class="nav__logo" aria-label="Crown Hotel home">CROWN HOTEL</a>
+
+      <ul class="nav__links nav__links--right">
+        <li><a href="../index.html#experiences">Explore</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+        <li><a href="../index.html#booking" class="nav__cta btn btn--primary">Book Now</a></li>
+      </ul>
+
+      <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </header>
+
+
+  <!-- 
+       PAGE HERO
+   -->
+  <section class="page-hero" aria-label="Our Facilities">
+    <div class="page-hero__bg" aria-hidden="true">
+      <img src="../assets/facilities-hero.webp" alt="">
+    </div>
+    <div class="page-hero__overlay" aria-hidden="true"></div>
+    <div class="page-hero__content">
+      <p class="hero__eyebrow">Hotel Facilities</p>
+      <h1 class="page-hero__title serif">Everything<br>You Need</h1>
+      <p class="page-hero__subtitle">Gym, dining, bar and meeting spaces - all under one roof</p>
+    </div>
+    <div class="scroll-indicator-wrapper" aria-hidden="true">
+      <div class="scroll-indicator">
+        <p class="scroll-indicator__label">Scroll</p>
+        <span class="scroll-indicator__line"></span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 
+       INTRO STATEMENT
+   -->
+  <div class="rooms-intro section section--bg">
+    <p class="rooms-intro__text serif">From an early morning gym session to a late-night drink at the bar, Crown Hotel is designed to support every part of your stay.</p>
+  </div>
+
+
+  <!-- 
+       FACILITY LISTINGS = EDITORIAL LAYOUT
+   -->
+  <div class="room-listings section">
+
+    <!-- Facility 1 = Gym -->
+    <article class="room-editorial" id="gym">
+      <div class="room-editorial__image-wrap">
+        <img src="../assets/gym-large.webp" alt="Crown Hotel gym"> 
+        <div class="room-editorial__meta" aria-hidden="true">
+          <span class="room-editorial__meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+            6am - 10pm
+          </span>
+          <span class="room-editorial__meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+            All Guests
+          </span>
+        </div>
+      </div>
+      <div class="room-editorial__body">
+        <span class="section-label">Health &amp; Fitness</span>
+        <h2 class="room-editorial__title serif">Fitness Suite</h2>
+        <p class="room-editorial__price">Complimentary for all guests</p>
+        <p class="room-editorial__description">Our fully equipped fitness suite is available to all guests throughout their stay. Whether you're keeping to your routine or making the most of a business trip, the gym offers everything you need for a great workout.</p>
+        <ul class="room-editorial__amenities">
+          <li>Cardio machines</li>
+          <li>Free weights</li>
+          <li>Resistance equipment</li>
+          <li>Changing facilities</li>
+          <li>Towels provided</li>
+          <li>Water station</li>
+          <li>Open 6am - 10pm daily</li>
+          <li>No booking required</li>
+        </ul>
+      </div>
+    </article>
+
+    <hr class="room-divider" aria-hidden="true">
+
+    <!-- Facility 2 = Restaurant -->
+    <article class="room-editorial room-editorial--reverse" id="restaurant">
+      <div class="room-editorial__image-wrap">
+        <img src="../assets/restaurant-large.webp" alt="Crown Hotel restaurant">
+        <div class="room-editorial__meta" aria-hidden="true">
+          <span class="room-editorial__meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            7am - 10pm
+          </span>
+          <span class="room-editorial__meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7" />
+            </svg>
+            Breakfast &amp; Dinner
+          </span>
+        </div>
+      </div>
+      <div class="room-editorial__body">
+        <span class="section-label">Dining</span>
+        <h2 class="room-editorial__title serif">The Restaurant</h2>
+        <p class="room-editorial__price">Open daily · Booking recommended</p>
+        <p class="room-editorial__description">Our restaurant serves freshly prepared dishes using locally sourced Norfolk ingredients. Open for breakfast and dinner, it's the perfect setting for a relaxed meal whether you're travelling alone or with colleagues.</p>
+        <ul class="room-editorial__amenities">
+          <li>Breakfast: 7am - 10am</li>
+          <li>Dinner: 6pm - 10pm</li>
+          <li>Locally sourced ingredients</li>
+          <li>Vegetarian &amp; vegan options</li>
+          <li>Private dining available</li>
+          <li>Table booking recommended</li>
+          <li>Open to non-residents</li>
+          <li>Room service available</li>
+        </ul>
+        <div class="room-editorial__actions">
+          <a href="dining.html" class="btn btn--primary">View Menu</a>
+          <a href="dining.html#reserve" class="room-editorial__discover">Reserve a table &#8594;</a>
+        </div>
+      </div>
+    </article>
+
+    <hr class="room-divider" aria-hidden="true">
+
+    <!-- Facility 3 Bar -->
+    <article class="room-editorial" id="bar">
+      <div class="room-editorial__image-wrap">
+        <img src="../assets/bar-large.webp" alt="The Crown Bar">
+        <div class="room-editorial__meta" aria-hidden="true">
+          <span class="room-editorial__meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+            12pm - 12am
+          </span>
+          <span class="room-editorial__meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M8 22h8"/><path d="M7 10h10"/><path d="M12 10v12"/><path d="M17 3H7l-1 7h10z"/>
+            </svg>
+            Walk-ins Welcome
+          </span>
+        </div>
+      </div>
+      <div class="room-editorial__body">
+        <span class="section-label">Drinks &amp; Cocktails</span>
+        <h2 class="room-editorial__title serif">The Crown Bar</h2>
+        <p class="room-editorial__price">Open daily from noon</p>
+        <p class="room-editorial__description">Wind down after a long day or catch up with colleagues over a drink at The Crown Bar. We offer a carefully curated selection of cocktails, wines, craft beers, and spirits in a relaxed and stylish setting.</p>
+        <ul class="room-editorial__amenities">
+          <li>Cocktail menu</li>
+          <li>Fine wine selection</li>
+          <li>Craft beers &amp; ales</li>
+          <li>Non-alcoholic options</li>
+          <li>Bar snacks available</li>
+          <li>Open noon - midnight</li>
+          <li>Open to non-residents</li>
+          <li>No booking required</li>
+        </ul>
+      </div>
+    </article>
+
+    <hr class="room-divider" aria-hidden="true">
+
+    <!-- Facility 4 Meeting Rooms -->
+    <article class="room-editorial room-editorial--reverse" id="meetings">
+      <div class="room-editorial__image-wrap">
+        <img src="../assets/meeting-large.webp" alt="Crown Hotel meeting rooms">
+        <div class="room-editorial__meta" aria-hidden="true">
+          <span class="room-editorial__meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <path d="M3 9h18M9 21V9"/>
+            </svg>
+            3 Rooms
+          </span>
+          <span class="room-editorial__meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+            Up to 60 People
+          </span>
+        </div>
+      </div>
+      <div class="room-editorial__body">
+        <span class="section-label">Events &amp; Business</span>
+        <h2 class="room-editorial__title serif">Meeting &amp; Function Rooms</h2>
+        <p class="room-editorial__price">Three spaces · 20 to 60 guests</p>
+        <p class="room-editorial__description">Crown Hotel offers three flexible meeting and function rooms, accommodating between 20 and 60 people. Whether you need a space for an intimate boardroom session or a larger conference, we have the right room for you.</p>
+        <ul class="room-editorial__amenities">
+          <li>The Boardroom - up to 20</li>
+          <li>The Norfolk Suite - up to 40</li>
+          <li>The Crown Room - Up to 60</li>
+          <li>Full AV equipment</li>
+          <li>Configurable layouts</li>
+          <li>Catering available</li>
+          <li>Natural daylight</li>
+          <li>Dedicated support staff</li>
+        </ul>
+        <div class="room-editorial__actions">
+          <a href="../index.html#meetings" class="btn btn--primary">View Rooms</a>
+          <a href="../index.html#contact" class="room-editorial__discover">Enquire now &#8594;</a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+
+  <!-- 
+       FOOTER
+   -->
+<footer id="contact" class="footer">
+  <div class="footer__grid">
+
+    <div>
+      <p class="footer__brand">CROWN HOTEL</p>
+      <p class="footer__tagline">A modern independent hotel on the<br>western edge of Norwich, Norfolk.</p>
+    </div>
+
+    <div class="footer__col">
+      <h3>The Hotel</h3>
+      <a href="rooms.html">Our Rooms</a>
+      <a href="dining.html">Restaurant &amp; Bar</a>
+      <a href="facilities.html">Facilities</a>
+    </div>
+
+    <div class="footer__col">
+      <h3>Find Us</h3>
+      <p>Crown Hotel, West Norwich<br>Norfolk, NR4 7TJ</p>
+      <p>Close to NNUH &amp; Norwich Research Park</p>
+      <p>+44 (0)1603 000 000</p>
+      <p>hello@crownhotelnorwich.co.uk</p>
+    </div>
+
+  </div>
+
+  <div class="footer__bottom">
+    <p class="footer__copyright">&copy; 2026 Crown Hotel Norwich. All rights reserved.</p>
+  </div>
+</footer>
+
+
+</body>
+</html>

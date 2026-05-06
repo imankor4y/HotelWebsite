@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports — Crown Hotel</title>
+    <link rel="stylesheet" href="/stylesheets/staff.css">
+</head>
+<body class="staff-page page-reports">
+
+    <!-- TOPBAR -->
+    <header class="staff-topbar">
+        <div class="staff-topbar__left">
+            <a href="/reception" class="staff-topbar__brand">CROWN HOTEL <span class="staff-topbar__portal">Staff</span></a>
+            <nav class="staff-topbar__links" aria-label="Staff navigation">
+                <a href="/reception">Reception</a>
+                <a href="/housekeeping">Housekeeping</a>
+                <a href="/reports" class="active">Reports</a>
+            </nav>
+        </div>
+        <div class="staff-topbar__right">
+            <a href="/" class="staff-topbar__website">Hotel Website</a>
+            <span class="staff-topbar__time"><%= new Date().toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }) %></span>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="staff-content">
+
+        <div class="staff-page-header">
+            <div>
+                <h1 class="staff-page-title">Weekly Report</h1>
+                <p class="staff-page-sub">Room occupancy and revenue for the selected week.</p>
+            </div>
+            <div class="report-controls">
+                <label class="s-label" for="reportWeek">Select Week</label>
+                <div class="s-form-row">
+                    <div class="s-field">
+                        <input type="date" id="reportWeek" class="s-input" value="<%= new Date().toISOString().split('T')[0] %>">
+                    </div>
+                    <button class="btn-s btn-s--primary" id="reportGenerate">Generate Report</button>
+                </div>
+            </div>
+        </div>
+
+        <% if (message) { %>
+            <p class="success-message" role="status"><%= message %></p>
+        <% } %>
+
+        <% if (report) { %>
+
+        <!-- Week label -->
+        <p class="staff-page-sub" id="weekLabel">
+            Week of <%= new Date(report.weekStart + 'T12:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) %>
+            &ndash;
+            <%= new Date(report.weekEnd + 'T12:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) %>
+        </p>
+
+        <!-- Summary stats -->
+        <div class="s-stats report-stats">
+            <div class="s-stat">
+                <p class="s-stat__label">Avg Occupancy</p>
+                <p class="s-stat__value" id="reportOccupancy"><%= report.summary.occupancyPct %>%</p>
+                <p class="s-stat__sub">across 32 rooms</p>
+            </div>
+            <div class="s-stat">
+                <p class="s-stat__label">Total Revenue</p>
+                <p class="s-stat__value" id="reportRevenue">£<%= report.summary.totalRevenue.toFixed(2) %></p>
+                <p class="s-stat__sub">this week</p>
+            </div>
+            <div class="s-stat">
+                <p class="s-stat__label">Room Nights</p>
+                <p class="s-stat__value" id="reportNights"><%= report.summary.totalNights %></p>
+                <p class="s-stat__sub">booked this week</p>
+            </div>
+            <div class="s-stat">
+                <p class="s-stat__label">Arrivals</p>
+                <p class="s-stat__value" id="reportArrivals"><%= report.summary.arrivals %></p>
+                <p class="s-stat__sub">check-ins this week</p>
+            </div>
+        </div>
+
+        <div class="report-grid">
+
+            <!-- Occupancy chart -->
+            <div class="staff-card">
+                <div class="staff-card__header">
+                    <span class="staff-card__title">Daily Occupancy</span>
+                </div>
+                <div class="staff-card__body">
+                    <div class="report-bar-wrap" id="occupancyBars">
+                        <% report.occupancy.forEach(function(row) { %>
+                        <%
+                            var fill = Math.round(row.rate * 100);
+                            var isLow = fill < 40;
+                        %>
+                        <div class="report-bar-row">
+                            <span class="report-bar-label"><%= row.day %></span>
+                            <div class="report-bar-track">
+                                <div class="report-bar-fill <%= isLow ? 'report-bar-fill--low' : '' %>" style="width:<%= fill %>%"></div>
+                            </div>
+                            <span class="report-bar-value"><%= fill %>%</span>
+                        </div>
+                        <% }); %>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Revenue breakdown -->
+            <div class="staff-card">
+                <div class="staff-card__header">
+                    <span class="staff-card__title">Revenue Breakdown</span>
+                </div>
+                <div class="staff-card__body">
+                    <div id="incomeRows">
+                        <% report.income.forEach(function(row) { %>
+                        <div class="report-income-row">
+                            <span class="report-income-row__label"><%= row.label %></span>
+                            <span class="report-income-row__value">£<%= row.amount.toFixed(2) %></span>
+                        </div>
+                        <% }); %>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <% } else { %>
+            <p class="staff-page-sub">No report data available. Try selecting a different week.</p>
+        <% } %>
+
+    </main>
+
+    <footer class="staff-footer">
+        &copy; <%= new Date().getFullYear() %> The Crown Hotel &mdash; Staff Portal
+    </footer>
+
+    <script src="/scripts/staff.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <meta name="description" content="Booking confirmed - Crown Hotel Norwich." >
+  <title>Booking Confirmed - Crown Hotel Norwich</title>
+  <link rel="stylesheet" href="../styles.css">
+  <script src="../scripts/booking.js" defer></script>
+  <script src="../scripts/main.js" defer></script>
+
+  
+</head>
+<body class="page-confirmation">
+
+  <!-- NAVIGATION -->
+  <header>
+    <nav class="nav nav--scrolled" aria-label="Main navigation">
+      <ul class="nav__links nav__links--left">
+        <li><a href="rooms.html">Rooms</a></li>
+        <li><a href="dining.html">Dining</a></li>
+        <li><a href="facilities.html">Facilities</a></li>
+      </ul>
+
+      <a href="../index.html" class="nav__logo" aria-label="Crown Hotel home">CROWN HOTEL</a>
+
+      <ul class="nav__links nav__links--right">
+        <li><a href="../index.html#experiences">Explore</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+        <li><a href="../index.html#booking" class="nav__cta btn btn--primary">Book Now</a></li>
+      </ul>
+
+      <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </header>
+
+
+  <!-- CONFIRMATION PAGE -->
+  <main class="confirmation-page" id="main-content">
+    <div class="confirmation-wrap">
+
+      <!-- Step indicator -->
+      <nav class="payment-steps" aria-label="Booking progress">
+        <div class="payment-step payment-step--done">
+          <span class="payment-step__num">1</span>
+          <span class="payment-step__label">Select Room</span>
+        </div>
+        <div class="payment-step__line" aria-hidden="true"></div>
+        <div class="payment-step payment-step--done">
+          <span class="payment-step__num">2</span>
+          <span class="payment-step__label">Your Details</span>
+        </div>
+        <div class="payment-step__line" aria-hidden="true"></div>
+        <div class="payment-step payment-step--active">
+          <span class="payment-step__num">3</span>
+          <span class="payment-step__label">Confirmation</span>
+        </div>
+      </nav>
+
+      <!-- Success header -->
+      <div class="confirmation-header">
+        <div class="confirmation-icon" aria-hidden="true">
+          <div class="confirmation-icon__circle">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+        </div>
+        <h1 class="confirmation-title serif">Booking Confirmed</h1>
+        <p class="confirmation-sub">Thank you for booking with Crown Hotel Norwich. A confirmation has been sent to <strong id="conf-email">your email address</strong>.</p>
+      </div>
+
+      <!-- Booking reference -->
+      <div class="confirmation-ref-card">
+        <p class="confirmation-ref-label">Booking Reference</p>
+        <p class="confirmation-ref-number" id="conf-ref">CRW-00000</p>
+        <p class="confirmation-ref-note">Please keep this reference safe. You will need it to manage or amend your booking.</p>
+      </div>
+
+      <!-- Booking details -->
+      <div class="confirmation-details">
+
+        <div class="confirmation-card">
+          <h2 class="confirmation-card__title">Your Stay</h2>
+
+          <div class="confirmation-row">
+            <span class="confirmation-row__key">Guest Name</span>
+            <span class="confirmation-row__val" id="conf-name">--</span>
+          </div>
+          <div class="confirmation-row">
+            <span class="confirmation-row__key">Room Type</span>
+            <span class="confirmation-row__val" id="conf-type">--</span>
+          </div>
+          <div class="confirmation-row">
+            <span class="confirmation-row__key">Check In</span>
+            <span class="confirmation-row__val" id="conf-checkin">--</span>
+          </div>
+          <div class="confirmation-row">
+            <span class="confirmation-row__key">Check Out</span>
+            <span class="confirmation-row__val" id="conf-checkout">--</span>
+          </div>
+          <div class="confirmation-row">
+            <span class="confirmation-row__key">Duration</span>
+            <span class="confirmation-row__val" id="conf-nights">--</span>
+          </div>
+          <div class="confirmation-row">
+            <span class="confirmation-row__key">Guests</span>
+            <span class="confirmation-row__val" id="conf-guests">--</span>
+          </div>
+          <div class="confirmation-row confirmation-row--total">
+            <span class="confirmation-row__key">Estimated Total</span>
+            <span class="confirmation-row__val" id="conf-total">--</span>
+          </div>
+        </div>
+
+        <div class="confirmation-card">
+          <h2 class="confirmation-card__title">Hotel Details</h2>
+
+          <div class="confirmation-row">
+            <span class="confirmation-row__key">Hotel</span>
+            <span class="confirmation-row__val">Crown Hotel Norwich</span>
+          </div>
+          <div class="confirmation-row">
+            <span class="confirmation-row__key">Address</span>
+            <span class="confirmation-row__val">West Norwich, Norfolk, NR4 7TJ</span>
+          </div>
+          <div class="confirmation-row">
+            <span class="confirmation-row__key">Check-in Time</span>
+            <span class="confirmation-row__val">From 3:00pm</span>
+          </div>
+          <div class="confirmation-row">
+            <span class="confirmation-row__key">Check-out Time</span>
+            <span class="confirmation-row__val">By 11:00am</span>
+          </div>
+          <div class="confirmation-row">
+            <span class="confirmation-row__key">Telephone</span>
+            <span class="confirmation-row__val">+44 (0)1603 000 000</span>
+          </div>
+          <div class="confirmation-row">
+            <span class="confirmation-row__key">Payment</span>
+            <span class="confirmation-row__val">Taken at checkout</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- What's next -->
+      <div class="confirmation-next">
+        <h2 class="confirmation-next__title serif">What Happens Next</h2>
+        <div class="confirmation-next__steps">
+          <div class="confirmation-next__step">
+            <span class="confirmation-next__num" aria-hidden="true">1</span>
+            <div>
+              <p class="confirmation-next__step-title">Confirmation Email</p>
+              <p class="confirmation-next__step-text">A confirmation email has been sent to your inbox with your booking details and reference number.</p>
+            </div>
+          </div>
+          <div class="confirmation-next__step">
+            <span class="confirmation-next__num" aria-hidden="true">2</span>
+            <div>
+              <p class="confirmation-next__step-title">Arrive at the Hotel</p>
+              <p class="confirmation-next__step-text">Check-in is from 3:00pm. Please bring your booking reference and a valid form of ID.</p>
+            </div>
+          </div>
+          <div class="confirmation-next__step">
+            <span class="confirmation-next__num" aria-hidden="true">3</span>
+            <div>
+              <p class="confirmation-next__step-title">Payment at Checkout</p>
+              <p class="confirmation-next__step-text">Your card will be charged when you check out. No payment is taken at time of booking.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="confirmation-actions">
+        <button class="btn btn--primary" onclick="window.print()">Print Confirmation</button>
+        <a href="manage-booking.html" class="btn btn--outline">Manage Booking</a>
+        <a href="../index.html" class="btn btn--outline">Back to Home</a>
+        <a href="rooms.html" class="btn btn--outline">Make Another Booking</a>
+      </div>
+
+      <!-- Print-only contact note -->
+      <div class="confirmation-print-note">
+        <p>Need to amend or cancel your booking? Contact us at hello@crownhotelnorwich.co.uk or call +44 (0)1603 000 000, quoting your booking reference.</p>
+      </div>
+
+    </div>
+  </main>
+
+
+  <!-- FOOTER-->
+<footer id="contact" class="footer">
+  <div class="footer__grid">
+
+    <div>
+      <p class="footer__brand">CROWN HOTEL</p>
+      <p class="footer__tagline">A modern independent hotel on the<br>western edge of Norwich, Norfolk.</p>
+    </div>
+
+    <div class="footer__col">
+      <h3>The Hotel</h3>
+      <a href="rooms.html">Our Rooms</a>
+      <a href="dining.html">Restaurant &amp; Bar</a>
+      <a href="facilities.html">Facilities</a>
+    </div>
+
+    <div class="footer__col">
+      <h3>Find Us</h3>
+      <p>Crown Hotel, West Norwich<br>Norfolk, NR4 7TJ</p>
+      <p>Close to NNUH &amp; Norwich Research Park</p>
+      <p>+44 (0)1603 000 000</p>
+      <p>hello@crownhotelnorwich.co.uk</p>
+    </div>
+
+  </div>
+
+  <div class="footer__bottom">
+    <p class="footer__copyright">&copy; 2026 Crown Hotel Norwich. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>

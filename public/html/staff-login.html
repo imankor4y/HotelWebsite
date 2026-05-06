@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Staff Access - Crown Hotel Norwich</title>
+  <link rel="stylesheet" href="../stylesheets/staff.css">
+  <script src="../scripts/main.js" defer></script>
+  <script src="../scripts/staff.js" defer></script>
+
+
+</head>
+<body class="page-passcode">
+
+  <div class="passcode-page">
+
+    <!-- Left branding panel -->
+    <div class="passcode-left">
+      <div class="passcode-left__top">
+        <p class="passcode-left__brand" ><a href="../index.html"  aria-label="Crown Hotel home">CROWN HOTEL</p></a>
+        <p class="passcode-left__portal">Staff Portal</p>
+      </div>
+
+      <div class="passcode-left__middle">
+        <h1 class="passcode-left__headline">Staff<br>Access<br>Only.</h1>
+      </div>
+
+      <div class="passcode-left__bottom">
+        <p class="passcode-left__notice">
+          This system is for authorised Crown Hotel staff only.<br>
+          Unauthorised access is not permitted.<br>
+          All activity is logged.
+        </p>
+        <p class="passcode-left__version">Crown Hotel Norwich · Staff Portal v1.0</p>
+      </div>
+    </div>
+
+    <!-- Right passcode panel -->
+    <div class="passcode-right">
+      <div class="passcode-card">
+
+        <p class="passcode-card__eyebrow">Secure Access</p>
+        <h2 class="passcode-card__title">Enter Passcode</h2>
+        <p class="passcode-card__sub">Enter the 5-digit staff passcode to access the management portal.</p>
+
+        <div class="passcode-inputs" role="group" aria-label="Passcode entry">
+          <input class="passcode-digit" type="password" inputmode="numeric" maxlength="1" pattern="[0-9]" autocomplete="off" aria-label="Digit 1" >
+          <input class="passcode-digit" type="password" inputmode="numeric" maxlength="1" pattern="[0-9]" autocomplete="off" aria-label="Digit 2" >
+          <input class="passcode-digit" type="password" inputmode="numeric" maxlength="1" pattern="[0-9]" autocomplete="off" aria-label="Digit 3" >
+          <input class="passcode-digit" type="password" inputmode="numeric" maxlength="1" pattern="[0-9]" autocomplete="off" aria-label="Digit 4" >
+          <input class="passcode-digit" type="password" inputmode="numeric" maxlength="1" pattern="[0-9]" autocomplete="off" aria-label="Digit 5" >
+        </div>
+
+        <p class="passcode-error" id="passcodeError" aria-live="polite">Incorrect passcode. Please try again.</p>
+
+        <button class="passcode-submit" id="passcodeSubmit" type="button">Continue</button>
+
+        <a href="../index.html" class="passcode-back">Back to hotel website</a>
+
+      </div>
+    </div>
+
+  </div>
+
+
+</body>
+</html>

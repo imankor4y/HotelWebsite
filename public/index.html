@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Crown Hotel Norwich - a modern independent hotel in west Norwich, close to the Norfolk and Norwich University Hospital and Norwich Research Park.">
+  <title>Crown Hotel Norwich</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="scripts/booking.js" defer></script>
+  <script src="scripts/main.js" defer></script>
+
+
+</head>
+<body class="page-home">
+
+  <!-- NAV-->
+  <header>
+    <nav class="nav" aria-label="Main navigation">
+      <ul class="nav__links nav__links--left">
+        <li><a href="html/rooms.html">Rooms</a></li>
+        <li><a href="html/dining.html">Dining</a></li>
+        <li><a href="html/facilities.html">Facilities</a></li>
+      </ul>
+
+      <a href="index.html" class="nav__logo" aria-label="Crown Hotel home">CROWN HOTEL</a>
+
+      <ul class="nav__links nav__links--right">
+        <li><a href="#experiences">Explore</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#booking" class="nav__cta btn btn--primary">Book Now</a></li>
+      </ul>
+
+      <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </header>
+
+
+  <!--HERO-->
+  <section class="hero" aria-label="Welcome to Crown Hotel Norwich">
+    <div class="hero__bg" aria-hidden="true">
+      <video class="hero__video" autoplay muted loop playsinline>
+        <source src="assets/hero.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="hero__overlay" aria-hidden="true"></div>
+
+    <div class="hero__content">
+      <p class="hero__eyebrow">Norwich · Established 2026 by KILR Hotels</p>
+      <h1 class="hero__title serif">A Stylish Stay<br>in Norwich</h1>
+      <p class="hero__subtitle">Modern independent hospitality in the heart of Norfolk</p>
+      <a href="#booking" class="btn btn--primary">Check Availability</a>
+    </div>
+
+    <div class="scroll-indicator-wrapper" aria-hidden="true">
+    <div class="scroll-indicator">
+      <p class="scroll-indicator__label">Scroll</p>
+      <span class="scroll-indicator__line"></span>
+    </div>
+</div>
+  </section>
+
+
+  <!-- BOOKING BAR-->
+  <section id="booking" class="booking-bar" aria-label="Check availability">
+    <div class="booking-bar__field">
+      <label for="checkin">Check In</label>
+      <input type="date" id="checkin" name="checkin" value="2026-05-01">
+    </div>
+
+    <div class="booking-bar__divider" aria-hidden="true"></div>
+
+    <div class="booking-bar__field">
+      <label for="checkout">Check Out</label>
+      <input type="date" id="checkout" name="checkout" value="2026-05-04">
+    </div>
+
+    <div class="booking-bar__divider" aria-hidden="true"></div>
+
+    <div class="booking-bar__field">
+      <label for="guests">Guests</label>
+      <select id="guests" name="guests">
+        <option value="1 Adult">1 Adult</option>
+        <option value="2 Adults" selected>2 Adults</option>
+        <option value="2 Adults, 1 Child">2 Adults, 1 Child</option>
+        <option value="2 Adults, 2 Children">2 Adults, 2 Children</option>
+      </select>
+
+    </div>
+
+    <div class="booking-bar__divider" aria-hidden="true"></div>
+
+    <div class="booking-bar__field">
+      <label for="room-type">Room Type</label>
+      <select id="room-type" name="room-type">
+        <option value="">Any Room</option>
+        <option value="std_d">Standard Double</option>
+        <option value="sup_d">Superior Double</option>
+        <option value="std_t">Standard Twin</option>
+        <option value="sup_t">Superior Twin</option>
+      </select>
+    </div>
+
+    <button type="button" class="btn btn--primary" data-booking-submit>Search Rooms</button>
+
+  </section>
+
+
+  <!-- ROOMS & SUITES
+   -->
+  <section id="rooms" class="section section--bg">
+    <div class="section-header section-header--flex">
+      <div>
+        <span class="section-label">Accommodation</span>
+        <h2 class="section-title serif">Our Rooms</h2>
+      </div>
+      <a href="html/rooms.html" class="btn btn--outline">View All Rooms</a>
+    </div>
+
+    <div class="rooms-grid">
+
+      <!-- Room 1 -->
+      <article class="room-card">
+        <div class="room-card__image">
+          <img src="assets/standard-double.webp" alt="Standard Double room">
+          <span class="room-card__badge">Best Value</span>
+        </div>
+        <div class="room-card__body">
+          <h3 class="room-card__title serif">Standard Double</h3>
+          <p class="room-card__price">From £65 per night</p>
+          <p class="room-card__description">A comfortable double room with everything you need for a relaxed stay, including en-suite bathroom, free Wi-Fi, and flat-screen TV.</p>
+          <a href="html/rooms.html" class="btn btn--outline btn--outline-sm">View Room</a>
+        </div>
+      </article>
+
+      <!-- Room 2 -->
+      <article class="room-card">
+        <div class="room-card__image">
+          <img src="assets/superior-double.webp" alt="Superior Double room"> 
+          <span class="room-card__badge">Most Popular</span>
+        </div>
+        <div class="room-card__body">
+          <h3 class="room-card__title serif">Superior Double</h3>
+          <p class="room-card__price">From £77 per night</p>
+          <p class="room-card__description">An upgraded double room with premium furnishings, a larger en-suite with walk-in shower, complimentary toiletries, and garden views.</p>
+          <a href="html/rooms.html" class="btn btn--outline btn--outline-sm">View Room</a>
+        </div>
+      </article>
+
+      <!-- Room 3 -->
+      <article class="room-card">
+        <div class="room-card__image">
+          <img src="assets/standard-twin.webp" alt="Standard Twin room"> 
+        </div>
+        <div class="room-card__body">
+          <h3 class="room-card__title serif">Standard Twin</h3>
+          <p class="room-card__price">From £62 per night</p>
+          <p class="room-card__description">Two single beds, ideal for colleagues or friends travelling together. Includes en-suite bathroom, free Wi-Fi, and workspace desk.</p>
+          <a href="html/rooms.html" class="btn btn--outline btn--outline-sm">View Room</a>
+        </div>
+      </article>
+
+      <!-- Room 4 -->
+      <article class="room-card">
+        <div class="room-card__image">
+           <img src="assets/superior-twin.webp" alt="Superior Twin room"> 
+          <span class="room-card__badge room-card__badge--accent">Superior</span>
+        </div>
+        <div class="room-card__body">
+          <h3 class="room-card__title serif">Superior Twin</h3>
+          <p class="room-card__price">From £75 per night</p>
+          <p class="room-card__description">Two single beds with superior fittings, a spacious en-suite, and extra amenities — perfect for extended business stays.</p>
+          <a href="html/rooms.html" class="btn btn--outline btn--outline-sm">View Room</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- FACILITIES-->
+  <section id="facilities" class="section section--white">
+    <div class="section-header section-header--centered">
+      <span class="section-label">Hotel Facilities</span>
+      <h2 class="section-title serif">Everything You Need</h2>
+    </div>
+
+    <div class="facilities-grid">
+
+      <div class="facility-card">
+        <div class="facility-card__icon" aria-hidden="true">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="18" cy="12" r="6" stroke="#3A86FF" stroke-width="1.5"/>
+            <path d="M8 30c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke="#3A86FF" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="facility-card__title">Concierge</h3>
+        <p class="facility-card__description">24-hour dedicated concierge service</p>
+      </div>
+
+      <div class="facility-card">
+        <div class="facility-card__icon" aria-hidden="true">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="14" width="24" height="16" rx="2" stroke="#3A86FF" stroke-width="1.5"/>
+            <path d="M12 14V10a6 6 0 0 1 12 0v4" stroke="#3A86FF" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="18" cy="22" r="2" fill="#3A86FF"/>
+          </svg>
+        </div>
+        <h3 class="facility-card__title">Fitness Suite</h3>
+        <p class="facility-card__description">State-of-the-art gym open 6am–10pm</p>
+      </div>
+
+      <div class="facility-card">
+        <div class="facility-card__icon" aria-hidden="true">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="18" cy="22" rx="10" ry="6" stroke="#3A86FF" stroke-width="1.5"/>
+            <path d="M8 22V16M28 22V16" stroke="#3A86FF" stroke-width="1.5"/>
+            <ellipse cx="18" cy="16" rx="10" ry="6" stroke="#3A86FF" stroke-width="1.5"/>
+            <ellipse cx="18" cy="10" rx="10" ry="6" stroke="#3A86FF" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3 class="facility-card__title">The Crown Bar</h3>
+        <p class="facility-card__description">Curated cocktails &amp; fine wine selection</p>
+      </div>
+
+      <div class="facility-card">
+        <div class="facility-card__icon" aria-hidden="true">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 26c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="#3A86FF" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M18 18V10M14 13h8" stroke="#3A86FF" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M6 26h24" stroke="#3A86FF" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="facility-card__title">Fine Dining</h3>
+        <p class="facility-card__description">Award-winning restaurant, open daily</p>
+      </div>
+
+      <div class="facility-card">
+        <div class="facility-card__icon" aria-hidden="true">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="8" width="24" height="18" rx="2" stroke="#3A86FF" stroke-width="1.5"/>
+            <path d="M14 26v2M22 26v2M11 30h14" stroke="#3A86FF" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M10 16h16M10 20h10" stroke="#3A86FF" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="facility-card__title">Meeting Rooms</h3>
+        <p class="facility-card__description">Three fully-equipped event spaces</p>
+      </div>
+
+      <div class="facility-card">
+        <div class="facility-card__icon" aria-hidden="true">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="18" cy="18" r="10" stroke="#3A86FF" stroke-width="1.5"/>
+            <path d="M18 8v10l6 4" stroke="#3A86FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="facility-card__title">Room Service</h3>
+        <p class="facility-card__description">Available 24 hours, seven days a week</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!--  ABOUT  -->
+  <section id="about" class="section section--bg">
+    <div class="about-grid">
+
+      <div class="about-grid__image">
+         <img src="assets/lobby.webp" alt="Interior view of Crown Hotel">
+        <div class="img-placeholder img-placeholder--tall"></div>
+      </div>
+
+      <div class="about-grid__text">
+        <span class="section-label">Our Story</span>
+        <h2 class="section-title serif">Independent. Modern.<br>Distinctly Norwich.</h2>
+        <p>Crown Hotel is a new independent hotel situated on the western edge of Norwich, conveniently close to the Norfolk and Norwich University Hospital and the Norwich Research Park, making it an ideal base for medical professionals, academics, and business travellers alike.</p>
+        <p>With 32 well-appointed rooms across four categories, a gym, restaurant, bar, and dedicated meeting spaces, we offer everything you need for a comfortable and productive stay - without compromise.</p>
+
+        <div class="about-stats">
+          <div class="stat">
+            <span class="stat__number serif">32</span>
+            <p class="stat__label">Rooms</p>
+          </div>
+          <div class="stat">
+            <span class="stat__number serif">3</span>
+            <p class="stat__label">Meeting Rooms</p>
+          </div>
+          <div class="stat">
+            <span class="stat__number serif">130+</span>
+            <p class="stat__label">Years of History</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!--  MEETING ROOMS -->
+  <section id="meetings" class="section section--white">
+    <div class="section-header section-header--flex">
+      <div>
+        <span class="section-label">Events &amp; Business</span>
+        <h2 class="section-title serif">Meeting &amp; Function Rooms</h2>
+      </div>
+      <a href="/meetings" class="btn btn--outline">Enquire Now</a>
+    </div>
+
+    <div class="rooms-grid">
+
+      <article class="room-card">
+        <div class="room-card__image">
+          <img src="assets/meeting-room-1.webp" alt="The Boardroom meeting room">
+          <div class="img-placeholder"></div>
+          <span class="room-card__badge">Up to 20 people</span>
+        </div>
+        <div class="room-card__body">
+          <h3 class="room-card__title serif">The Boardroom</h3>
+          <p class="room-card__price">Available from £450 half day</p>
+          <p class="room-card__description">An intimate meeting room suited to smaller teams, interviews, and focused working sessions. Includes AV equipment and refreshments.</p>
+          <a href="/meetings/boardroom" class="btn btn--outline btn--outline-sm">View Room</a>
+        </div>
+      </article>
+
+      <article class="room-card">
+        <div class="room-card__image">
+          <img src="assets/meeting-room-2.webp" alt="The Norfolk Suite meeting room"> 
+          <div class="img-placeholder"></div>
+          <span class="room-card__badge">Up to 40 people</span>
+        </div>
+        <div class="room-card__body">
+          <h3 class="room-card__title serif">The Norfolk Suite</h3>
+          <p class="room-card__price">Available from £650 half day</p>
+          <p class="room-card__description">A flexible mid-sized space suitable for seminars, training days, and team meetings. Configurable layout with full AV facilities.</p>
+          <a href="/meetings/norfolk-suite" class="btn btn--outline btn--outline-sm">View Room</a>
+        </div>
+      </article>
+
+      <article class="room-card">
+        <div class="room-card__image">
+          <img src="assets/meeting-room-3.webp" alt="The Crown Suite function room"> 
+          <div class="img-placeholder"></div>
+          <span class="room-card__badge room-card__badge--accent">Up to 60 people</span>
+        </div>
+        <div class="room-card__body">
+          <h3 class="room-card__title serif">The Crown Room</h3>
+          <p class="room-card__price">Available from £1,400 half day</p>
+          <p class="room-card__description">Our largest function space, ideal for conferences, product launches, and private dining. Fully equipped with stage, AV, and catering facilities.</p>
+          <a href="/meetings/crown-room" class="btn btn--outline btn--outline-sm">View Room</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- 
+       LOCAL ATTRACTIONS
+   -->
+  <section id="experiences" class="section section--white">
+    <div class="section-header">
+      <span class="section-label">Explore Norwich</span>
+      <h2 class="section-title serif">Local Attractions</h2>
+    </div>
+
+    <div class="attractions-grid">
+
+      <article class="attraction-card">
+        <div class="attraction-card__image">
+          <img src="assets/nnuh.webp" alt="Norfolk and Norwich University Hospital"> 
+          <div class="img-placeholder"></div>
+        </div>
+        <div class="attraction-card__body">
+          <p class="attraction-card__distance">0.3 miles</p>
+          <h3 class="attraction-card__name serif">NNUH</h3>
+          <p class="attraction-card__type">Healthcare · Hospital</p>
+          <a href="https://www.google.com/maps/dir/Crown+Hotel,+NR4+7TJ,+Norwich/Norfolk+and+Norwich+University+Hospital,+Colney+Lane,+Norwich,+NR4+7UY" target="_blank" rel="noopener noreferrer" class="attraction-card__directions">Get Directions ↗</a>
+        </div>
+      </article>
+
+      <article class="attraction-card">
+        <div class="attraction-card__image">
+          <img src="assets/research-park.webp" alt="Norwich Research Park">
+          <div class="img-placeholder"></div>
+        </div>
+        <div class="attraction-card__body">
+          <p class="attraction-card__distance">0.5 miles</p>
+          <h3 class="attraction-card__name serif">Research Park</h3>
+          <p class="attraction-card__type">Science · Innovation</p>
+          <a href="https://www.google.com/maps/dir/Crown+Hotel,+NR4+7TJ,+Norwich/Norwich+Research+Park,+Colney,+Norwich,+NR4+7UH" target="_blank" rel="noopener noreferrer" class="attraction-card__directions">Get Directions ↗</a>
+        </div>
+      </article>
+
+      <article class="attraction-card">
+        <div class="attraction-card__image">
+          <img src="assets/uea.webp" alt="University of East Anglia campus">
+          <div class="img-placeholder"></div>
+        </div>
+        <div class="attraction-card__body">
+          <p class="attraction-card__distance">0.8 miles</p>
+          <h3 class="attraction-card__name serif">UEA Campus</h3>
+          <p class="attraction-card__type">University · Education</p>
+          <a href="https://www.google.com/maps/dir/Crown+Hotel,+NR4+7TJ,+Norwich/University+of+East+Anglia,+Norwich,+NR4+7TJ" target="_blank" rel="noopener noreferrer" class="attraction-card__directions">Get Directions ↗</a>
+        </div>
+      </article>
+
+      <article class="attraction-card">
+        <div class="attraction-card__image">
+          <img src="assets/eaton-park.webp" alt="Eaton Park Norwich">
+          <div class="img-placeholder"></div>
+        </div>
+        <div class="attraction-card__body">
+          <p class="attraction-card__distance">1.0 miles</p>
+          <h3 class="attraction-card__name serif">Eaton Park</h3>
+          <p class="attraction-card__type">Park · Leisure</p>
+          <a href="https://www.google.com/maps/dir/Crown+Hotel,+NR4+7TJ,+Norwich/Eaton+Park,+Norwich,+NR4+6PZ" target="_blank" rel="noopener noreferrer" class="attraction-card__directions">Get Directions ↗</a> 
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- 
+       EXPERIENCE / OFFERS STRIP
+   -->
+  <section class="experience-strip">
+    <span class="section-label">Plan Your Visit</span>
+    <h2 class="section-title serif">Stay, Meet &amp; Dine</h2>
+    <p class="experience-strip__text">Whether you're visiting the hospital, working at the Research Park, or simply exploring Norfolk, Crown Hotel offers a comfortable and convenient base with everything on your doorstep.</p>
+    <a href="#booking" class="btn btn--primary">Check Availability</a>
+  </section>
+
+
+  <!-- FOOTER-->
+<footer id="contact" class="footer">
+  <div class="footer__grid">
+
+    <div>
+      <p class="footer__brand">CROWN HOTEL</p>
+      <p class="footer__tagline">A modern independent hotel on the<br>western edge of Norwich, Norfolk.</p>
+    </div>
+
+    <div class="footer__col">
+      <h3>The Hotel</h3>
+      <a href="html/rooms.html">Our Rooms</a>
+      <a href="html/dining.html">Restaurant &amp; Bar</a>
+      <a href="html/facilities.html">Facilities</a>
+    </div>
+
+    <div class="footer__col">
+      <h3>Staff</h3>
+      <a href="html/staff-login.html">Staff Login</a>
+    </div>
+
+    <div class="footer__col">
+      <h3>Find Us</h3>
+      <p>Crown Hotel, West Norwich<br>Norfolk, NR4 7TJ</p>
+      <p>Close to NNUH &amp; Norwich Research Park</p>
+      <p>+44 (0)1603 000 000</p>
+      <p>hello@crownhotelnorwich.co.uk</p>
+    </div>
+
+  </div>
+
+  <div class="footer__bottom">
+    <p class="footer__copyright">&copy; 2026 Crown Hotel Norwich. All rights reserved.</p>
+  </div>
+</footer> 
+</body>
+</html>

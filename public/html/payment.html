@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Complete your booking at Crown Hotel Norwich.">
+  <title>Complete Booking - Crown Hotel Norwich</title>
+  <link rel="stylesheet" href="../styles.css" >
+  <script src="../scripts/booking.js" defer></script>
+  <script src="../scripts/main.js" defer></script>
+
+
+</head>
+<body class="page-payment">
+
+  <!-- 
+       NAVIGATION -->
+  <header>
+    <nav class="nav nav--scrolled"  aria-label="Main navigation">
+      <ul class="nav__links nav__links--left">
+        <li><a href="rooms.html">Rooms</a></li>
+        <li><a href="dining.html">Dining</a></li>
+        <li><a href="facilities.html">Facilities</a></li>
+      </ul>
+
+      <a href="../index.html" class="nav__logo" aria-label="Crown Hotel home">CROWN HOTEL</a>
+
+      <ul class="nav__links nav__links--right">
+        <li><a href="../index.html#experiences">Explore</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+        <li><a href="../index.html#booking" class="nav__cta btn btn--primary">Book Now</a></li>
+      </ul>
+
+      <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </header>
+
+
+  <!-- PAYMENT PAGE -->
+  <main class="payment-page" id="main-content">
+
+    <div class="payment-wrap">
+
+      <!-- Left column - form -->
+      <div class="payment-form-col">
+
+        <!-- Step indicator -->
+        <nav class="payment-steps" aria-label="Booking progress">
+          <div class="payment-step payment-step--done">
+            <span class="payment-step__num">1</span>
+            <span class="payment-step__label">Select Room</span>
+          </div>
+          <div class="payment-step__line" aria-hidden="true"></div>
+          <div class="payment-step payment-step--active">
+            <span class="payment-step__num">2</span>
+            <span class="payment-step__label">Your Details</span>
+          </div>
+          <div class="payment-step__line" aria-hidden="true"></div>
+          <div class="payment-step">
+            <span class="payment-step__num">3</span>
+            <span class="payment-step__label">Confirmation</span>
+          </div>
+        </nav>
+        <p class="payment-sub">Payment is taken at checkout, not at the time of booking.</p>
+
+        <form class="payment-form" id="paymentForm" method="POST" action="/api/bookings" novalidate>
+
+          <!-- Hidden fields passed from booking bar -->
+          <input type="hidden" id="f-checkin" name="checkin">
+          <input type="hidden" id="f-checkout" name="checkout">
+          <input type="hidden" id="f-room-type" name="room_type">
+          <input type="hidden" id="f-guests" name="guests">
+
+          <!-- Guest details -->
+          <fieldset class="payment-fieldset">
+            <legend class="payment-fieldset__title">Guest Details</legend>
+
+            <div class="payment-field">
+              <label class="payment-label" for="full-name">Full Name <span aria-hidden="true">*</span></label>
+              <input
+                class="payment-input"
+                type="text"
+                id="full-name"
+                name="c_name"
+                autocomplete="name"
+                required
+
+                placeholder="e.g. Jane Smith"
+             >
+              <span class="payment-field__error" id="error-name" aria-live="polite"></span>
+            </div>
+
+            <div class="payment-field">
+              <label class="payment-label" for="email">Email Address <span aria-hidden="true">*</span></label>
+              <input
+                class="payment-input"
+                type="email"
+                id="email"
+                name="c_email"
+                autocomplete="email"
+                required
+
+                placeholder="e.g. jane@example.com"
+             >
+              <span class="payment-field__error" id="error-email" aria-live="polite"></span>
+            </div>
+
+            <div class="payment-field">
+              <label class="payment-label" for="address">Address <span aria-hidden="true">*</span></label>
+              <input
+                class="payment-input"
+                type="text"
+                id="address"
+                name="c_address"
+                autocomplete="address-line1"
+                required
+
+                placeholder="e.g. 12 High Street, Norwich, NR1 1AB"
+             >
+              <span class="payment-field__error" id="error-address" aria-live="polite"></span>
+            </div>
+
+          </fieldset>
+
+          <!-- Payment details -->
+          <fieldset class="payment-fieldset">
+            <legend class="payment-fieldset__title">Payment Details</legend>
+            <p class="payment-fieldset__note">Your card will not be charged until checkout.</p>
+
+            <div class="payment-field">
+              <label class="payment-label" for="card-type">Card Type <span aria-hidden="true">*</span></label>
+              <select
+                class="payment-input payment-input--select"
+                id="card-type"
+                name="c_cardtype"
+                required
+
+              >
+                <option value="">Select card type</option>
+                <option value="V">Visa</option>
+                <option value="MC">Mastercard</option>
+                <option value="A">American Express</option>
+              </select>
+              <span class="payment-field__error" id="error-cardtype" aria-live="polite"></span>
+            </div>
+
+            <div class="payment-field">
+              <label class="payment-label" for="card-number">Card Number <span aria-hidden="true">*</span></label>
+              <input
+                class="payment-input"
+                type="text"
+                id="card-number"
+                name="c_cardno"
+                inputmode="numeric"
+                autocomplete="cc-number"
+                maxlength="16"
+                required
+
+                placeholder="16-digit card number"
+             >
+              <span class="payment-field__error" id="error-cardno" aria-live="polite"></span>
+            </div>
+
+            <div class="payment-field">
+              <label class="payment-label" for="card-expiry">Expiry Date <span aria-hidden="true">*</span></label>
+              <input
+                class="payment-input payment-input--half"
+                type="text"
+                id="card-expiry"
+                name="c_cardexp"
+                autocomplete="cc-exp"
+                maxlength="5"
+                required
+
+                placeholder="MM/YY"
+             >
+              <span class="payment-field__error" id="error-cardexp" aria-live="polite"></span>
+            </div>
+
+          </fieldset>
+
+          <!-- Booking notes -->
+          <fieldset class="payment-fieldset">
+            <legend class="payment-fieldset__title">Additional Notes</legend>
+
+            <div class="payment-field">
+              <label class="payment-label" for="notes">Notes about your booking (optional)</label>
+              <textarea
+                class="payment-input payment-input--textarea"
+                id="notes"
+                name="b_notes"
+                rows="4"
+                placeholder="e.g. early check-in request, accessibility requirements, special occasions..."
+              ></textarea>
+            </div>
+
+          </fieldset>
+
+          <!-- Error summary -->
+          <div class="payment-error-summary" id="errorSummary" role="alert" aria-live="polite" hidden>
+            <p class="payment-error-summary__title">Please correct the following:</p>
+            <ul class="payment-error-summary__list" id="errorList"></ul>
+          </div>
+
+          <button type="submit" class="btn btn--primary payment-submit" id="submitBtn">
+            Confirm Booking
+          </button>
+
+          <p class="payment-terms">
+            Payment is taken at checkout only.
+          </p>
+
+        </form>
+
+      </div>
+
+      <!-- Right column - booking summary -->
+      <aside class="payment-summary" aria-label="Booking summary">
+        <div class="payment-summary__inner">
+
+          <h2 class="payment-summary__title serif">Booking Summary</h2>
+
+          <div class="payment-summary__hotel">
+            <p class="payment-summary__hotel-name">Crown Hotel Norwich</p>
+            <p class="payment-summary__hotel-loc">West Norwich, NR4 7TJ</p>
+          </div>
+
+          <div class="payment-summary__details">
+            <div class="payment-summary__row">
+              <span class="payment-summary__key">Room Type</span>
+              <span class="payment-summary__val" id="summary-type">Standard Double</span>
+            </div>
+            <div class="payment-summary__row">
+              <span class="payment-summary__key">Check In</span>
+              <span class="payment-summary__val" id="summary-checkin">--</span>
+            </div>
+            <div class="payment-summary__row">
+              <span class="payment-summary__key">Check Out</span>
+              <span class="payment-summary__val" id="summary-checkout">--</span>
+            </div>
+            <div class="payment-summary__row">
+              <span class="payment-summary__key">Nights</span>
+              <span class="payment-summary__val" id="summary-nights">--</span>
+            </div>
+            <div class="payment-summary__row">
+              <span class="payment-summary__key">Guests</span>
+              <span class="payment-summary__val" id="summary-guests">--</span>
+            </div>
+          </div>
+
+          <div class="payment-summary__divider" aria-hidden="true"></div>
+
+          <div class="payment-summary__total-row">
+            <span class="payment-summary__total-label">Estimated Total</span>
+            <span class="payment-summary__total-val" id="summary-total">--</span>
+          </div>
+
+          <p class="payment-summary__note">Final total confirmed at check-in. Payment taken at checkout.</p>
+
+          <div class="payment-summary__policy">
+            <h3 class="payment-summary__policy-title">Cancellation Policy</h3>
+            <p class="payment-summary__policy-text">Free cancellation up to 48 hours before check-in. Cancellations made within 48 hours may incur a one-night charge.</p>
+          </div>
+
+        </div>
+      </aside>
+
+    </div>
+
+  </main>
+
+
+  <!--  FOOTER -->
+ <footer id="contact" class="footer">
+  <div class="footer__grid">
+
+    <div>
+      <p class="footer__brand">CROWN HOTEL</p>
+      <p class="footer__tagline">A modern independent hotel on the<br>western edge of Norwich, Norfolk.</p>
+    </div>
+
+    <div class="footer__col">
+      <h3>The Hotel</h3>
+      <a href="rooms.html">Our Rooms</a>
+      <a href="dining.html">Restaurant &amp; Bar</a>
+      <a href="facilities.html">Facilities</a>
+    </div>
+
+    <div class="footer__col">
+      <h3>Find Us</h3>
+      <p>Crown Hotel, West Norwich<br>Norfolk, NR4 7TJ</p>
+      <p>Close to NNUH &amp; Norwich Research Park</p>
+      <p>+44 (0)1603 000 000</p>
+      <p>hello@crownhotelnorwich.co.uk</p>
+    </div>
+
+  </div>
+
+  <div class="footer__bottom">
+    <p class="footer__copyright">&copy; 2026 Crown Hotel Norwich. All rights reserved.</p>
+  </div>
+</footer>
+</body>
+</html>

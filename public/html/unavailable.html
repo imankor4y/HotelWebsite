@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Room not available - Crown Hotel Norwich. View alternative options.">
+  <title>Room Unavailable - Crown Hotel Norwich</title>
+  <link rel="stylesheet" href="../styles.css">
+  <script src="../scripts/main.js" defer></script>
+</head>
+<body class="page-unavailable">
+
+  <!--  NAVIGATION-->
+  <header>
+    <nav class="nav nav--scrolled" aria-label="Main navigation">
+      <ul class="nav__links nav__links--left">
+        <li><a href="rooms.html">Rooms</a></li>
+        <li><a href="dining.html">Dining</a></li>
+        <li><a href="facilities.html">Facilities</a></li>
+      </ul>
+
+      <a href="../index.html" class="nav__logo" aria-label="Crown Hotel home">CROWN HOTEL</a>
+
+      <ul class="nav__links nav__links--right">
+        <li><a href="../index.html#explore">Explore</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+        <li><a href="../index.html#booking" class="nav__cta btn btn--primary">Book Now</a></li>
+      </ul>
+
+      <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </header>
+
+
+  <!-- UNAVAILABLE PAGE
+   -->
+  <main class="unavailable-page" id="main-content">
+    <div class="unavailable-wrap">
+
+      <!-- Message -->
+      <div class="unavailable-header">
+        <span class="section-label">Room Availability</span>
+        <h1 class="unavailable-title serif">Unfortunately, that room is not available</h1>
+        <p class="unavailable-sub" id="unavailable-msg">The room type you requested is not available for your selected dates. Please see the alternatives below, or adjust your dates and try again.</p>
+      </div>
+
+      <!-- Search summary -->
+      <div class="unavailable-search-summary" id="searchSummary">
+        <div class="unavailable-search-summary__item">
+          <span class="unavailable-search-summary__label">Check In</span>
+          <span class="unavailable-search-summary__val" id="summary-checkin">--</span>
+        </div>
+        <div class="unavailable-search-summary__divider" aria-hidden="true"></div>
+        <div class="unavailable-search-summary__item">
+          <span class="unavailable-search-summary__label">Check Out</span>
+          <span class="unavailable-search-summary__val" id="summary-checkout">--</span>
+        </div>
+        <div class="unavailable-search-summary__divider" aria-hidden="true"></div>
+        <div class="unavailable-search-summary__item">
+          <span class="unavailable-search-summary__label">Nights</span>
+          <span class="unavailable-search-summary__val" id="summary-nights">--</span>
+        </div>
+        <div class="unavailable-search-summary__divider" aria-hidden="true"></div>
+        <div class="unavailable-search-summary__item">
+          <span class="unavailable-search-summary__label">Guests</span>
+          <span class="unavailable-search-summary__val" id="summary-guests">--</span>
+        </div>
+        <a href="rooms.html" class="btn btn--outline unavailable-search-summary__change">Change Search</a>
+      </div>
+
+      <!-- Alternative rooms -->
+      <section class="unavailable-alternatives" aria-label="Alternative rooms">
+        <h2 class="unavailable-alternatives__title serif">Available Alternatives</h2>
+        <p class="unavailable-alternatives__sub">The following room types are available for your dates. Select one to proceed with your booking.</p>
+
+        <div class="unavailable-rooms" id="alternativeRooms">
+
+          <!-- Standard Double -->
+          <article class="unavailable-room-card" id="alt-std_d">
+            <div class="unavailable-room-card__image">
+              <img src="../assets/standard-double.webp" alt="Standard Double room at Crown Hotel">
+            </div>
+            <div class="unavailable-room-card__body">
+              <div class="unavailable-room-card__top">
+                <div>
+                  <span class="section-label">Standard</span>
+                  <h3 class="unavailable-room-card__title serif">Standard Double</h3>
+                </div>
+                <div class="unavailable-room-card__pricing">
+                  <p class="unavailable-room-card__rate">£65 <span>per night</span></p>
+                  <p class="unavailable-room-card__total" id="total-std_d">--</p>
+                </div>
+              </div>
+              <p class="unavailable-room-card__desc">A comfortable double room with en-suite bathroom, free Wi-Fi, flat-screen TV, and tea and coffee facilities.</p>
+              <ul class="unavailable-room-card__features">
+                <li>Double bed</li>
+                <li>En-suite bathroom</li>
+                <li>Free Wi-Fi</li>
+                <li>Flat-screen TV</li>
+              </ul>
+              <button class="btn btn--primary unavailable-room-card__btn" data-room="std_d">Select this Room</button>
+            </div>
+          </article>
+
+          <!-- Superior Double -->
+          <article class="unavailable-room-card" id="alt-sup_d">
+            <div class="unavailable-room-card__image">
+              <img src="../assets/superior-double.webp" alt="Superior Double room at Crown Hotel">
+            </div>
+            <div class="unavailable-room-card__body">
+              <div class="unavailable-room-card__top">
+                <div>
+                  <span class="section-label">Superior</span>
+                  <h3 class="unavailable-room-card__title serif">Superior Double</h3>
+                </div>
+                <div class="unavailable-room-card__pricing">
+                  <p class="unavailable-room-card__rate">£77 <span>per night</span></p>
+                  <p class="unavailable-room-card__total" id="total-sup_d">--</p>
+                </div>
+              </div>
+              <p class="unavailable-room-card__desc">An upgraded double room with walk-in shower, premium toiletries, mini fridge, and garden views.</p>
+              <ul class="unavailable-room-card__features">
+                <li>King-size double bed</li>
+                <li>Walk-in shower</li>
+                <li>Premium toiletries</li>
+                <li>Garden views</li>
+              </ul>
+              <button class="btn btn--primary unavailable-room-card__btn" data-room="sup_d">Select this Room</button>
+            </div>
+          </article>
+
+          <!-- Standard Twin -->
+          <article class="unavailable-room-card" id="alt-std_t">
+            <div class="unavailable-room-card__image">
+              <img src="../assets/standard-twin.webp" alt="Standard Twin room at Crown Hotel">
+            </div>
+            <div class="unavailable-room-card__body">
+              <div class="unavailable-room-card__top">
+                <div>
+                  <span class="section-label">Standard</span>
+                  <h3 class="unavailable-room-card__title serif">Standard Twin</h3>
+                </div>
+                <div class="unavailable-room-card__pricing">
+                  <p class="unavailable-room-card__rate">£62 <span>per night</span></p>
+                  <p class="unavailable-room-card__total" id="total-std_t">--</p>
+                </div>
+              </div>
+              <p class="unavailable-room-card__desc">Two single beds, ideal for colleagues or friends. Includes en-suite bathroom, free Wi-Fi, and workspace desk.</p>
+              <ul class="unavailable-room-card__features">
+                <li>Two single beds</li>
+                <li>En-suite bathroom</li>
+                <li>Workspace desk</li>
+                <li>Free Wi-Fi</li>
+              </ul>
+              <button class="btn btn--primary unavailable-room-card__btn" data-room="std_t">Select this Room</button>
+            </div>
+          </article>
+
+          <!-- Superior Twin -->
+          <article class="unavailable-room-card" id="alt-sup_t">
+            <div class="unavailable-room-card__image">
+              <img src="../assets/superior-twin.webp" alt="Superior Twin room at Crown Hotel">
+            </div>
+            <div class="unavailable-room-card__body">
+              <div class="unavailable-room-card__top">
+                <div>
+                  <span class="section-label">Superior</span>
+                  <h3 class="unavailable-room-card__title serif">Superior Twin</h3>
+                </div>
+                <div class="unavailable-room-card__pricing">
+                  <p class="unavailable-room-card__rate">£75 <span>per night</span></p>
+                  <p class="unavailable-room-card__total" id="total-sup_t">--</p>
+                </div>
+              </div>
+              <p class="unavailable-room-card__desc">Two single beds with superior fittings, walk-in shower, and extra amenities. Ideal for extended business stays.</p>
+              <ul class="unavailable-room-card__features">
+                <li>Two single beds</li>
+                <li>Walk-in shower</li>
+                <li>Premium toiletries</li>
+                <li>Mini fridge</li>
+              </ul>
+              <button class="btn btn--primary unavailable-room-card__btn" data-room="sup_t">Select this Room</button>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- Try different dates -->
+      <section class="unavailable-retry">
+        <h2 class="unavailable-retry__title serif">Try Different Dates</h2>
+        <p class="unavailable-retry__sub">Your preferred room type may be available on other dates. Adjust your search below.</p>
+
+        <section class="booking-bar unavailable-retry__bar" aria-label="Search different dates">
+          <div class="booking-bar__field">
+            <label for="retry-checkin">Check In</label>
+            <input type="date" id="retry-checkin" name="checkin">
+          </div>
+          <div class="booking-bar__divider" aria-hidden="true"></div>
+          <div class="booking-bar__field">
+            <label for="retry-checkout">Check Out</label>
+            <input type="date" id="retry-checkout" name="checkout">
+          </div>
+          <div class="booking-bar__divider" aria-hidden="true"></div>
+          <div class="booking-bar__field">
+            <label for="retry-guests">Guests</label>
+            <select id="retry-guests" name="guests">
+              <option value="1 Adult">1 Adult</option>
+              <option value="2 Adults" selected>2 Adults</option>
+              <option value="2 Adults, 1 Child">2 Adults, 1 Child</option>
+              <option value="2 Adults, 2 Children">2 Adults, 2 Children</option>
+            </select>
+          </div>
+          <div class="booking-bar__divider" aria-hidden="true"></div>
+          <div class="booking-bar__field">
+            <label for="retry-room-type">Room Type</label>
+            <select id="retry-room-type" name="room-type">
+              <option value="">Any Room</option>
+              <option value="std_d">Standard Double</option>
+              <option value="sup_d">Superior Double</option>
+              <option value="std_t">Standard Twin</option>
+              <option value="sup_t">Superior Twin</option>
+            </select>
+          </div>
+          <button type="button" class="btn btn--primary" data-booking-submit>Search Again</button>
+        </section>
+      </section>
+
+      <!-- Contact -->
+      <div class="unavailable-contact">
+        <p>Need help finding availability? Call us on <a href="tel:+441603000000">+44 (0)1603 000 000</a> or email <a href="mailto:hello@crownhotelnorwich.co.uk">hello@crownhotelnorwich.co.uk</a></p>
+      </div>
+
+    </div>
+  </main>
+
+
+  <!-- FOOTER-->
+  <footer id="contact" class="footer">
+    <div class="footer__grid">
+
+      <div>
+        <p class="footer__brand">CROWN HOTEL</p>
+        <p class="footer__tagline">A modern independent hotel on the<br>western edge of Norwich, Norfolk.</p>
+      </div>
+
+      <div class="footer__col">
+        <h3>The Hotel</h3>
+        <a href="rooms.html">Our Rooms</a>
+        <a href="dining.html">Restaurant &amp; Bar</a>
+        <a href="facilities.html">Facilities</a>
+      </div>
+
+      <div class="footer__col">
+        <h3>Find Us</h3>
+        <p>Crown Hotel, West Norwich<br>Norfolk, NR4 7TJ</p>
+        <p>Close to NNUH &amp; Norwich Research Park</p>
+        <p>+44 (0)1603 000 000</p>
+        <p>hello@crownhotelnorwich.co.uk</p>
+      </div>
+
+    </div>
+
+    <div class="footer__bottom">
+      <p class="footer__copyright">&copy; 2026 Crown Hotel Norwich. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../scripts/booking.js" defer></script>
+
+</body>
+</html>

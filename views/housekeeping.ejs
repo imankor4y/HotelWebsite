@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Housekeeping — Crown Hotel</title>
+    <link rel="stylesheet" href="/stylesheets/staff.css">
+</head>
+<body class="staff-page">
+
+    <!-- TOPBAR -->
+    <header class="staff-topbar">
+        <div class="staff-topbar__left">
+            <a href="/reception" class="staff-topbar__brand">CROWN HOTEL <span class="staff-topbar__portal">Staff</span></a>
+            <nav class="staff-topbar__links" aria-label="Staff navigation">
+                <a href="/reception">Reception</a>
+                <a href="/housekeeping" class="active">Housekeeping</a>
+                <a href="/reports">Reports</a>
+            </nav>
+        </div>
+        <div class="staff-topbar__right">
+            <a href="/" class="staff-topbar__website">Hotel Website</a>
+            <span class="staff-topbar__time"><%= new Date().toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }) %></span>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="staff-content">
+
+        <div class="staff-page-header">
+            <div>
+                <h1 class="staff-page-title">Rooms Awaiting Preparation</h1>
+                <p class="staff-page-sub">These rooms have been checked out and need to be prepared for the next guest.</p>
+            </div>
+        </div>
+
+        <% if (message) { %>
+            <p class="success-message" role="status"><%= message %></p>
+        <% } %>
+
+        <% if (rooms.length === 0) { %>
+            <div class="staff-card">
+                <div class="staff-card__body">
+                    <p class="staff-page-sub">No rooms currently need preparation. All rooms are ready.</p>
+                </div>
+            </div>
+        <% } else { %>
+
+        <div class="staff-card">
+            <div class="staff-card__header">
+                <span class="staff-card__title">Rooms to Prepare</span>
+                <span class="staff-page-sub"><%= rooms.length %> room<%= rooms.length !== 1 ? 's' : '' %></span>
+            </div>
+            <div class="s-table-wrap">
+                <table class="s-table" id="housekeeping-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Room</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Notes</th>
+                            <th scope="col">Mark As</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% rooms.forEach(function(room) { %>
+                        <tr>
+                            <td><strong><%= room.r_no %></strong></td>
+                            <td><%= classLabels[room.r_class] || room.r_class %></td>
+                            <td><%= room.r_notes || '—' %></td>
+                            <td class="s-table__actions">
+
+                                <form method="post" action="/housekeeping/update">
+                                    <input type="hidden" name="r_no"     value="<%= room.r_no %>">
+                                    <input type="hidden" name="r_status" value="A">
+                                    <button type="submit" class="btn-s btn-s--primary btn-s--sm">Available</button>
+                                </form>
+
+                                <form method="post" action="/housekeeping/update">
+                                    <input type="hidden" name="r_no"     value="<%= room.r_no %>">
+                                    <input type="hidden" name="r_status" value="X">
+                                    <button type="submit" class="btn-s btn-s--danger btn-s--sm">Unavailable</button>
+                                </form>
+
+                            </td>
+                        </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <% } %>
+
+    </main>
+
+    <footer class="staff-footer">
+        &copy; <%= new Date().getFullYear() %> The Crown Hotel &mdash; Staff Portal
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <meta name="description" content="Dining at Crown Hotel Norwich - The Restaurant. From the first coffee to the last glass." >
+  <title>Dining - Crown Hotel Norwich</title>
+  <link rel="stylesheet" href="../styles.css" >
+  <script src="../scripts/main.js" defer></script>
+</head>
+<body class="page-dining">
+
+  <!-- 
+       NAVIGATION
+   -->
+  <header>
+    <nav class="nav" aria-label="Main navigation">
+      <ul class="nav__links nav__links--left">
+        <li><a href="rooms.html">Rooms</a></li>
+        <li><a href="dining.html" class="active">Dining</a></li>
+        <li><a href="facilities.html">Facilities</a></li>
+      </ul>
+
+      <a href="../index.html" class="nav__logo" aria-label="Crown Hotel home">CROWN HOTEL</a>
+
+      <ul class="nav__links nav__links--right">
+        <li><a href="../index.html#experiences">Explore</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+        <li><a href="../index.html#booking" class="nav__cta btn btn--primary">Book Now</a></li>
+      </ul>
+
+      <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </header>
+
+
+  <!-- 
+       HERO, full viewport video
+   -->
+  <section class="dining-hero" aria-label="The Crown Hotel Restaurant">
+    <div class="dining-hero__bg" aria-hidden="true">
+      <video class="dining-hero__video" autoplay muted loop playsinline poster="../assets/dining-hero-poster.jpg">
+        <source src="../assets/dining-hero.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="dining-hero__overlay" aria-hidden="true"></div>
+    <div class="dining-hero__content">
+      <p class="dining-hero__eyebrow">Dining</p>
+      <h1 class="dining-hero__title serif">From the first coffee<br><em>to the last glass.</em></h1>
+      <a href="#reserve" class="btn btn--outline-light dining-hero__cta">Reserve a Table</a>
+    </div>
+    <div class="scroll-indicator-wrapper" aria-hidden="true">
+      <div class="scroll-indicator">
+        <p class="scroll-indicator__label">Scroll</p>
+        <span class="scroll-indicator__line"></span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 
+       MANIFESTO
+   -->
+  <div class="dining-manifesto">
+    <div class="dining-manifesto__inner">
+      <p class="dining-manifesto__text serif">The Crown Hotel Restaurant is open from breakfast until late. It is a place for long lunches that turn into early dinners, for celebrating things that don't need a reason, and for the particular pleasure of eating well in a room that knows what it's doing.</p>
+    </div>
+  </div>
+
+
+  <!-- 
+       FULL BLEED IMAGE Restaurant interior
+   -->
+  <div class="dining-fullbleed">
+    <img src="../assets/dining-interior.webp" alt="The Crown Hotel Restaurant interior">
+    <div class="dining-fullbleed__caption">The Restaurant — open daily</div>
+  </div>
+
+
+  <!-- 
+       THE RESTAURANT
+   -->
+  <section class="dining-section dining-section--light" id="restaurant">
+    <div class="dining-section__grid">
+
+      <div class="dining-section__image">
+        <img src="../assets/dining-table.webp" alt="Table setting at The Crown Hotel Restaurant">
+      </div>
+
+      <div class="dining-section__body">
+        <span class="section-label">The Restaurant</span>
+        <h2 class="dining-section__title serif">Breakfast.<br>Dinner.<br>Everything in between.</h2>
+        <p class="dining-section__text">We open early and close late. Breakfast is properly done - eggs how you like them, good coffee, no rush. Dinner is the main event: a menu that changes, a wine list that rewards exploration, and service that knows when to disappear.</p>
+        <div class="dining-hours">
+          <div class="dining-hours__item">
+            <span class="dining-hours__label">Breakfast</span>
+            <span class="dining-hours__time">7:00 - 10:30am</span>
+          </div>
+          <div class="dining-hours__item">
+            <span class="dining-hours__label">Dinner</span>
+            <span class="dining-hours__time">6:00 - 10:00pm</span>
+          </div>
+          <div class="dining-hours__item">
+            <span class="dining-hours__label">Room Service</span>
+            <span class="dining-hours__time">24 hours</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- 
+       MENU TASTER  dark section
+   -->
+  <section class="dining-menu" id="menus">
+    <div class="dining-menu__header">
+      <span class="dining-menu__label">Evening Menu</span>
+      <h2 class="dining-menu__title serif">From the Kitchen</h2>
+      <p class="dining-menu__sub">A selection from our current dinner menu. The full menu changes seasonally.</p>
+    </div>
+
+    <div class="dining-menu__grid">
+
+      <div class="dining-menu__course">
+        <h3 class="dining-menu__course-title">To Start</h3>
+        <div class="dining-menu__item">
+          <span class="dining-menu__dish">Scallop Crudo</span>
+          <span class="dining-menu__desc">Raw Orkney scallop, peas, lovage</span>
+        </div>
+        <div class="dining-menu__item">
+          <span class="dining-menu__dish">White Asparagus</span>
+          <span class="dining-menu__desc">Cod’s roe, wild garlic, bottarga</span>
+        </div>
+        <div class="dining-menu__item">
+          <span class="dining-menu__dish">Ricotta Cappelleti</span>
+          <span class="dining-menu__desc">Nettle, broad beans and pecorino</span>
+        </div>
+      </div>
+
+      <div class="dining-menu__course">
+        <h3 class="dining-menu__course-title">To Follow</h3>
+        <div class="dining-menu__item">
+          <span class="dining-menu__dish">Grilled Turbot</span>
+          <span class="dining-menu__desc">Artichoke, borlotti beans, agretti</span>
+        </div>
+        <div class="dining-menu__item">
+          <span class="dining-menu__dish">Maiale al Latte</span>
+          <span class="dining-menu__desc">Pink fir potatoes, piattone beans, sage</span>
+        </div>
+        <div class="dining-menu__item">
+          <span class="dining-menu__dish">Suffolk Lamb Neck</span>
+          <span class="dining-menu__desc">Asparagus, peas, anchovy</span>
+        </div>
+      </div>
+
+      <div class="dining-menu__course">
+        <h3 class="dining-menu__course-title">To Finish</h3>
+        <div class="dining-menu__item">
+          <span class="dining-menu__dish">Dark chocolate cremeux</span>
+          <span class="dining-menu__desc">Olive oil, sea salt</span>
+        </div>
+        <div class="dining-menu__item">
+          <span class="dining-menu__dish">Choux bun</span>
+          <span class="dining-menu__desc">Gariguette strawberries, chantilly cream</span>
+        </div>
+        <div class="dining-menu__item">
+          <span class="dining-menu__dish">Seasonal Cheese Plate</span>
+          <span class="dining-menu__desc">Cora Linn, Wittenham, damson jelly & crackers</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- 
+       FULL BLEED IMAGE Food shot
+   -->
+  <div class="dining-fullbleed dining-fullbleed--tall">
+    <img src="../assets/dining-food.webp" alt="Signature dish at The Crown Hotel Restaurant">
+  </div>
+
+
+  <!-- 
+       THE BAR
+   -->
+  <section class="dining-section dining-section--dark" id="bar">
+    <div class="dining-section__grid dining-section__grid--reverse">
+
+      <div class="dining-section__image">
+         <img src="../assets/dining-bar-large.webp" alt="The Crown Bar"> 
+      </div>
+
+      <div class="dining-section__body">
+        <span class="section-label">The Bar</span>
+        <h2 class="dining-section__title" >The Crown Bar.</h2>
+        <p class="dining-section__text">Open from noon until midnight. The bar is for drinking, obviously, but it's also for sitting in for longer than you planned. Cocktails are made properly. The wine list is honest. There is always something interesting on draught.</p>
+        <p class="dining-section__text" >Walk-ins always welcome. No reservation required. Just pull up a stool.</p>
+        <div class="dining-hours" >
+          <div class="dining-hours__item">
+            <span class="dining-hours__label" >Open</span>
+            <span class="dining-hours__time" >Noon until Midnight</span>
+          </div>
+          <div class="dining-hours__item">
+            <span class="dining-hours__label" >Walk-ins</span>
+            <span class="dining-hours__time" >Always welcome</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- 
+       RESERVATION
+   -->
+  <section class="dining-reserve" id="reserve">
+    <div class="dining-reserve__inner">
+      <span class="section-label">Reservations</span>
+      <h2 class="dining-reserve__title serif">Join us for dinner.</h2>
+      <p class="dining-reserve__text">Tables for dinner should be booked in advance. Breakfast and bar are walk-in. We look forward to seeing you.</p>
+      <div class="dining-reserve__actions">
+        <a href="tel:+441603000000" class="btn btn--primary">Call to Reserve</a>
+        <a href="mailto:dining@crownhotelnorwich.co.uk" class="btn btn--outline">Email Us</a>
+      </div>
+      <p class="dining-reserve__note">+44 (0)1603 000 000 · dining@crownhotelnorwich.co.uk</p>
+    </div>
+  </section>
+
+
+  <!-- 
+       FOOTER
+   -->
+<footer id="contact" class="footer">
+  <div class="footer__grid">
+
+    <div>
+      <p class="footer__brand">CROWN HOTEL</p>
+      <p class="footer__tagline">A modern independent hotel on the<br>western edge of Norwich, Norfolk.</p>
+    </div>
+
+    <div class="footer__col">
+      <h3>The Hotel</h3>
+      <a href="rooms.html">Our Rooms</a>
+      <a href="dining.html">Restaurant &amp; Bar</a>
+      <a href="facilities.html">Facilities</a>
+    </div>
+
+    <div class="footer__col">
+      <h3>Find Us</h3>
+      <p>Crown Hotel, West Norwich<br>Norfolk, NR4 7TJ</p>
+      <p>Close to NNUH &amp; Norwich Research Park</p>
+      <p>+44 (0)1603 000 000</p>
+      <p>hello@crownhotelnorwich.co.uk</p>
+    </div>
+
+  </div>
+
+  <div class="footer__bottom">
+    <p class="footer__copyright">&copy; 2026 Crown Hotel Norwich. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
