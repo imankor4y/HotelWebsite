@@ -509,51 +509,9 @@ update booking set b_outstanding=0 where b_ref in (
 select b.b_ref from booking b, roombooking rb 
 where b.b_ref=rb.b_ref and rb.checkout < '16Oct2024');
 
---- end of database setup ---
-
---- useful queries ---
-
---1 booking costs room-by-room breakdown
-select b.b_ref, rt.price, rb.checkout-rb.checkin as noofnights, rb.r_no, rt.price*(rb.checkout-rb.checkin) as cost
-from booking b, rates rt, roombooking rb, room rm
-where b.b_ref=rb.b_ref
-and rb.r_no=rm.r_no
-and rm.r_class=rt.r_class
-and b.b_ref = XXXXX; -- booking ref to be inserted
-
-
----eg 
-
-select b.b_ref, rt.price, rb.checkout-rb.checkin as noofnights, rb.r_no, rt.price*(rb.checkout-rb.checkin) as cost
-from booking b, rates rt, roombooking rb, room rm
-where b.b_ref=rb.b_ref
-and rb.r_no=rm.r_no
-and rm.r_class=rt.r_class
-and b.b_ref = 13052; 
-
--- 13011
--- 13052
--- 13066
--- 13083
--- 13098
-
-
---2 booking costs in a single query
-select b.b_ref, (rb.checkout-rb.checkin) as noofnights, count(rb.r_no) as noofrooms, sum(rt.price*(rb.checkout-rb.checkin)) as total
-from booking b, rates rt, roombooking rb, room rm
-where b.b_ref=rb.b_ref
-and rb.r_no=rm.r_no
-and rm.r_class=rt.r_class
-and b.b_ref = XXXXX -- booking ref to be inserted
-group by b.b_ref, noofnights;
-
-
---eg 
-
-select b.b_ref, (rb.checkout-rb.checkin) as noofnights, count(rb.r_no) as noofrooms, sum(rt.price*(rb.checkout-rb.checkin)) as total
-from booking b, rates rt, roombooking rb, room rm
-where b.b_ref=rb.b_ref
-and rb.r_no=rm.r_no
-and rm.r_class=rt.r_class
-and b.b_ref = 13098 -- booking ref to be inserted
-group by b.b_ref, noofnights;
+CREATE TABLE hotelbooking.payment (
+    p_id     SERIAL PRIMARY KEY,
+    b_ref    INTEGER REFERENCES hotelbooking.booking(b_ref),
+    p_amount NUMERIC(10,2),
+    p_date   TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
