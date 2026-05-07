@@ -169,11 +169,34 @@
                                     <button type="submit" class="btn-s btn-s--ghost btn-s--sm">Pay</button>
                                 </form>
                                 <% } %>
+                                <% if (room.b_ref) { %>
+                                <button type="button"
+                                        class="btn-s btn-s--ghost btn-s--sm payment-log-toggle"
+                                        data-ref="<%= room.b_ref %>">
+                                    Payments
+                                </button>
+                                <% } %>
                                 <% if (!canCheckIn && !canCheckOut) { %>
                                     <span class="s-table__no-action">—</span>
                                 <% } %>
                             </td>
                         </tr>
+                        <% if (room.b_ref) { %>
+                        <tr class="payment-log-row" id="payment-log-<%= room.b_ref %>" hidden>
+                            <td colspan="9" class="payment-log-cell">
+                                <div class="payment-log">
+                                    <p class="payment-log__title">Payment History — CRW-<%= room.b_ref %></p>
+                                    <div class="payment-log__entries" id="payment-entries-<%= room.b_ref %>">
+                                        <p class="payment-log__loading">Loading...</p>
+                                    </div>
+                                    <div class="payment-log__summary">
+                                        <span>Total Charged: <strong>£<%= parseFloat(room.b_cost || 0).toFixed(2) %></strong></span>
+                                        <span>Outstanding: <strong>£<%= parseFloat(room.b_outstanding || 0).toFixed(2) %></strong></span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <% } %>
                         <% }); %>
                     </tbody>
                 </table>

@@ -855,13 +855,16 @@ textarea {
 
 .s-table .s-table__actions {
   white-space: nowrap;
+  min-width: 200px;
 }
 
 .s-table .s-table__actions form,
-.s-table .s-table__actions > * {
+.s-table .s-table__actions .btn-s,
+.s-table .s-table__actions .s-form-row {
   display: inline-flex;
-  gap: 0.5rem;
   vertical-align: middle;
+  gap: 0.4rem;
+  margin-right: 0.3rem;
 }
 
 /* 13. STAT BOXES*/
@@ -905,7 +908,8 @@ textarea {
 }
 
 
-/*  14. Housekeeping  */
+/* ─────────────────────────────────────────────
+   14. Housekeeping
 
 .hk-toolbar {
   display: flex;
@@ -1084,8 +1088,9 @@ textarea {
 .s-table__no-action {
   color: var(--s-subtle);
   font-size: 12px;
+  display: block;
+  width: 100%;
 }
-
 
 /* 16. REPORTS PAGE */
 
@@ -1201,6 +1206,11 @@ textarea {
 
 .payment-amount-input {
   width: 90px;
+}
+
+.s-table__no-action {
+  color: var(--s-subtle);
+  font-size: 12px;
 }
 
 /* Staff topbar portal label */
@@ -1439,4 +1449,71 @@ textarea {
     height: 50px;
     font-size: 18px;
   }
+}
+
+
+/* ─────────────────────────────────────────────
+   20. PAYMENT LOG
+───────────────────────────────────────────── */
+
+.payment-log-row td {
+  padding: 0;
+  background: var(--s-bg-dark);
+}
+
+.payment-log {
+  padding: 1rem 1.5rem;
+  border-top: 2px solid var(--s-green);
+}
+
+.payment-log__title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--s-muted);
+  margin-bottom: 0.75rem;
+}
+
+.payment-log__entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--s-border);
+  font-size: 13px;
+}
+
+.payment-log__entry:last-child {
+  border-bottom: none;
+}
+
+.payment-log__date {
+  color: var(--s-muted);
+}
+
+.payment-log__amount {
+  font-weight: 600;
+  color: var(--s-navy);
+}
+
+.payment-log__summary {
+  display: flex;
+  gap: 2rem;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--s-border);
+  font-size: 12px;
+  color: var(--s-muted);
+}
+
+.payment-log__none {
+  font-size: 13px;
+  color: var(--s-muted);
+  font-style: italic;
+}
+
+.payment-log__loading {
+  font-size: 13px;
+  color: var(--s-muted);
 }

@@ -1014,6 +1014,7 @@ document.addEventListener('DOMContentLoaded', function () {
   } else if (body.classList.contains('page-reception')) {
     Reception.init();
     AmendBooking.init();
+    PaymentLog.init();
   } else if (body.classList.contains('page-reports')) {
     Reports.init();
   }
@@ -1116,6 +1117,66 @@ var AmendBooking = {
     AmendBooking.hideForm();
     document.getElementById('amendRef').value = '';
     document.getElementById('amendError').textContent = '';
+  }
+
+};
+
+
+/* ─────────────────────────────────────────────
+   10. PAYMENT LOG
+   Handles the payment history toggle on reception.
+───────────────────────────────────────────── */
+
+var PaymentLog = {
+
+  init: function () {
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest('.payment-log-toggle');
+      if (!btn) return;
+      var ref = btn.getAttribute('data-ref');
+      PaymentLog.toggle(ref);
+    });
+  },
+
+  toggle: function (ref) {
+    var row = document.getElementById('payment-log-' + ref);
+    if (!row) return;
+
+    if (row.hidden) {
+      row.hidden = false;
+      PaymentLog.load(ref);
+    } else {
+      row.hidden = true;
+    }
+  },
+
+  load: function (ref) {
+    var container = document.getElementById('payment-entries-' + ref);
+    if (!container) return;
+
+    fetch('/api/payments/' + ref)
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        if (!data.success || data.payments.length === 0) {
+          container.innerHTML = '<p class="payment-log__none">No payments recorded yet.</p>';
+          return;
+        }
+        var html = '';
+        data.payments.forEach(function (p) {
+          var date = new Date(p.p_date).toLocaleDateString('en-GB', {
+            day: 'numeric', month: 'short', year: 'numeric',
+            hour: '2-digit', minute: '2-digit'
+          });
+          html += '<div class="payment-log__entry">' +
+            '<span class="payment-log__date">' + date + '</span>' +
+            '<span class="payment-log__amount">£' + parseFloat(p.p_amount).toFixed(2) + '</span>' +
+            '</div>';
+        });
+        container.innerHTML = html;
+      })
+      .catch(function () {
+        container.innerHTML = '<p class="payment-log__none">Could not load payments.</p>';
+      });
   }
 
 };

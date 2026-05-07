@@ -295,6 +295,22 @@ app.post('/housekeeping/update', async (req, res) => {
     }
 });
 
+// GET /api/payments/:ref
+// Returns all payments made against a booking for the reception payment log.
+app.get('/api/payments/:ref', async (req, res) => {
+    const b_ref = parseInt(req.params.ref, 10);
+    if (isNaN(b_ref)) {
+        return res.json({ success: false, message: 'Invalid booking reference.' });
+    }
+    try {
+        const payments = await bookings.getPaymentsForBooking(db, b_ref);
+        return res.json({ success: true, payments });
+    } catch (err) {
+        console.error('Payments lookup error:', err);
+        return res.json({ success: false, message: 'Could not load payments.' });
+    }
+});
+
 // -------------------------------------------------------
 // AMEND BOOKING ROUTES
 // -------------------------------------------------------

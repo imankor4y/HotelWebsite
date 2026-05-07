@@ -230,6 +230,7 @@ async function checkOut(db, r_no) {
 }
 
 // Reduces the outstanding balance on a booking by the payment amount
+// and logs the payment in the payment table.
 async function recordPayment(db, b_ref, amount) {
     await db.query(
         `UPDATE hotelbooking.booking
@@ -237,6 +238,22 @@ async function recordPayment(db, b_ref, amount) {
          WHERE b_ref = $2`,
         [amount, b_ref]
     );
+    await db.query(
+        `INSERT INTO hotelbooking.payment (b_ref, p_amount)
+         VALUES ($1, $2)`,
+        [b_ref, amount]
+    );
+}
+
+// Returns all payments made against a booking.
+async function getPaymentsForBooking(db, b_ref) {
+    const result = await db.query(`
+        SELECT p_amount, p_date
+        FROM hotelbooking.payment
+        WHERE b_ref = $1
+        ORDER BY p_date ASC
+    `, [b_ref]);
+    return result.rows;
 }
 
 
@@ -444,5 +461,6 @@ module.exports = {
     updateRoomStatus,
     getWeeklyReport,
     getBookingByRef,
-    amendBooking
+    amendBooking,
+    getPaymentsForBooking
 };
